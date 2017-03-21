@@ -22,4 +22,8 @@ public class Main {
             System.out.println("Punkt numer " + (i+1) + " został dodany!");
         }
     }
+
+    public static void roznicaProgresywna(ArrayList<Punkt> punkty, double szukanyX) {
+        
+    }
 }
