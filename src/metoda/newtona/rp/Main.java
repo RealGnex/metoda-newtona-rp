@@ -22,8 +22,34 @@ public class Main {
             System.out.println("Punkt numer " + (i+1) + " został dodany!");
         }
     }
-
-    public static void roznicaProgresywna(ArrayList<Punkt> punkty, double szukanyX) {
-        
+    public static int silnia (int n) {
+        if (n==0)
+            return 1;
+        else
+            return (n*silnia(n-1));
     }
+
+    public static double[] roznicaProgresywna(ArrayList<Punkt> punkty, double szukanyX) {
+        double wynik = 0;
+        final int iloscPunktow = punkty.size();
+        double[][] roznicaProgresywna = new double[iloscPunktow][]; //tworzenie kolumn
+        //tworzenie wierszy
+        for (int i = 0; i < iloscPunktow; i++)
+            roznicaProgresywna[i] = new double[iloscPunktow-i];
+        //ustawienie pierwszego wiersza
+        for (int i = 0; i < iloscPunktow; i++)
+            roznicaProgresywna[i][0] = punkty.get(i).y;
+        //wypełnianie reszty wierszy
+        for (int i = 1; i < iloscPunktow; i++) {
+            for (int j = 0; j < iloscPunktow - i; j++) {
+                roznicaProgresywna[j][i] = ((roznicaProgresywna[j+1][i-1] - roznicaProgresywna[j][i-1])
+                        / (silnia(i) * Math.pow(1,i)));
+            }
+        }
+        double[] wiersz = roznicaProgresywna[0];
+        return wiersz;
+
+    }
+
+
 }
