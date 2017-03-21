@@ -57,7 +57,7 @@ public class Main {
         double[] roznica = roznicaProgresywna(punkty);
         double y = roznica[iloscPunktow-1];
         for (int j = iloscPunktow - 2; j >= 0; j--)
-            y = y * (szukanyX - punkty.get(j).x) + roznica[j];
+            y = y * (szukanyX - punkty.get(j).x) + roznica[j]; //TODO - inaczej trzeba liczyć
         System.out.println("Interpolacja w punkcie " + szukanyX + " to " + y);
     }
 
